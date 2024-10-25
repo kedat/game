@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: url("https://file.hstatic.net/200000722513/file/on-trong-genshin-impact-ma-game-thu-nhat-dinh-phai-den-thuong-ngoan-08_84fdc25644904b478eef97f6e2a5976c_1024x1024.jpg");
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-around;
+    width: 700px;
+}
+
+.login-box, .register-box {
+    width: 300px;
+    padding: 40px;
+    background: rgba(156, 142, 142, 0.486);
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.textbox {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.textbox input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; 
+}
+
+.btn {
+    width: 100%; 
+    padding: 10px; 
+    background: #000000d8;
+    border: none;
+    color: rgb(192, 192, 192);
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-sizing: border-box; 
+}
+
+.btn:hover {
+    background: #9b8a8a;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login Form</title>
+    <link rel="stylesheet" href="account.css">
+    <style>
+        header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0; 
+    z-index: 1000;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin: 0 10px; 
+}
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    padding: 5px 10px; 
+}
+
+header nav ul li a:hover {
+    color: #ddd; 
+}
+
+header.scrolled {
+    background-color: white;
+    color: black;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header.scrolled nav ul li a {
+    color: black;
+}
+    </style>
+</head>
+<body>  
+    <div class="form-container">
+
+        <div class="register-box">
+            <button type="button" class="btn switch-btn" onclick="toggleForms()">Switch to Login</button>
+
+            <h2>Register Form</h2>
+            <form>
+                <div class="textbox">
+                    <input type="text" placeholder="User Name" name="username" minlength="6" maxlength="18" required>
+                </div>
+                <div class="textbox">
+                    <input type="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" minlength="6" maxlength="18" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Confirm Password" name="confirmPassword" minlength="6" maxlength="18" required oninput="this.setCustomValidity(this.value != document.querySelector('input[name=password]').value ? 'Passwords do not match.' : '')">
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+
+
+        <div class="login-box">
+            <button type="button" class="btn switch-btn" onclick="toggleForms()">Switch to Register</button>
+
+            <h2>Login Form</h2>
+            <form>
+                <div class="textbox">
+                    <input type="text" placeholder="User Name" name="username" minlength="6" maxlength="18" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" minlength="6" maxlength="18" required>
+                </div>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
+        </div>
+    </div>
+    <header id="navbar">
+        <div class="logo">Shop skin trò chơi</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="#games">Skin trò chơi</a></li>
+                <li><a href="#how-to-use">Cách sử dụng</a></li>
+                <li><a href="account.html">Đăng nhập</a></li>
+                <li><a href="contact.html">Hỗ Trợ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        document.querySelector('.register-box').style.display = 'none';
+
+        function toggleForms() {
+            let registerBox = document.querySelector('.register-box');
+            let loginBox = document.querySelector('.login-box');
+            if (registerBox.style.display === 'none') {
+                registerBox.style.display = 'block';
+                loginBox.style.display = 'none';
+            } else {
+                registerBox.style.display = 'none';
+                loginBox.style.display = 'block';
+            }
+        }
+
+        // Redirect to index.html after validating the login form
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the form inputs
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple form validation
+            if (username == 'dungkae' && password == 'dungkae') {
+                // If valid, redirect to index.html
+                window.location.href = 'index.html';
+            } else {
+                alert('Wrong username or password');
+            }
+        });
+    </script>
+</body>
+</html>
