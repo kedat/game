@@ -1,25 +1,35 @@
-// Lắng nghe sự kiện scroll để thay đổi màu navbar khi cuộn trang
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    const howToSection = document.getElementById('how-to-use').offsetTop;
+document.addEventListener("DOMContentLoaded", function () {
+  const navbar = document.getElementById("navbar");
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    // Nếu cuộn trang xuống đến phần how-to-use, đổi màu navbar
-    if (window.scrollY >= howToSection - 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
+  if (loggedInUser) {
+    const logoutItem = document.createElement("li");
+    const logoutButton = document.createElement("button");
+    logoutButton.textContent = "Đăng xuất";
+    logoutButton.style.cursor = "pointer";
+    logoutButton.style.padding = "10px 15px";
+    logoutButton.style.border = "none";
+    logoutButton.style.borderRadius = "5px";
+    logoutButton.style.fontSize = "16px";
+    logoutButton.style.fontWeight = "bold";
+    logoutButton.style.background = "red";
+    logoutButton.style.color = "white";
+    logoutButton.style.transition = "background 0.3s";
+
+    logoutButton.addEventListener("click", function () {
+      localStorage.removeItem("loggedInUser"); // Xóa thông tin đăng nhập
+      alert("Bạn đã đăng xuất thành công!");
+      window.location.href = "account.html"; // Chuyển về trang đăng nhập
+    });
+
+    logoutButton.addEventListener("mouseover", function () {
+      logoutButton.style.opacity = "0.8";
+    });
+    logoutButton.addEventListener("mouseout", function () {
+      logoutButton.style.opacity = "1";
+    });
+
+    logoutItem.appendChild(logoutButton);
+    navbar.querySelector("ul").appendChild(logoutItem);
+  }
 });
-
-// Kiểm tra nếu người dùng đã đăng nhập
-const username = localStorage.getItem('username');
-if (username) {
-    const navbar = document.getElementById('navbar');
-    const newUser = document.createElement('li');
-    newUser.innerHTML = `<span>Welcome, ${username}</span>`;
-    navbar.appendChild(newUser);
-
-    // Ẩn liên kết Log In và Sign Up sau khi đăng nhập
-    document.querySelector('a[href="login.html"]').style.display = 'none';
-    document.querySelector('a[href="signup.html"]').style.display = 'none';
-}
